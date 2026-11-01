@@ -51,21 +51,22 @@ app.use(
 app.use(express.json({ limit: "1mb" }));
 
 // Health check (useful when you deploy)
-app.get("/health", (req, res) => {
-  return res.status(200).json({
-    status: "ok",
-    database: mongoose.connection.readyState === 1 ? "connected" : "disconnected"
-  });
-});
-app.use(async (req, res, next) => {
+app.get("/health", async (req, res) => {
   try {
     await connectDB();
-    next();
+
+    return res.status(200).json({
+      status: "ok",
+      database: mongoose.connection.readyState === 1
+        ? "connected"
+        : "disconnected"
+    });
   } catch (err) {
-    console.error("MongoDB connection error:", err.message);
+    console.error("Health check database error:", err.message);
 
     return res.status(503).json({
-      error: "Database is unavailable. Please try again."
+      status: "error",
+      database: "disconnected"
     });
   }
 });
