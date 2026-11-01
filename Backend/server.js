@@ -57,6 +57,18 @@ app.get("/health", (req, res) => {
     database: mongoose.connection.readyState === 1 ? "connected" : "disconnected"
   });
 });
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error("MongoDB connection error:", err.message);
+
+    return res.status(503).json({
+      error: "Database is unavailable. Please try again."
+    });
+  }
+});
 
 // Slow down password guessing: only failed logins count
 const loginLimiter = rateLimit({
@@ -195,53 +207,45 @@ console.log(
   "OpenRouter API key loaded:",
   Boolean(process.env.OPENROUTER_API_KEY)
 );
-
 const PORT = process.env.PORT || 8080;
 
+let dbConnectionPromise = null;
+
 const connectDB = async () => {
+  if (mongoose.connection.readyState === 1) {
+    return;
+  }
+
   if (!process.env.MONGODB_URI) {
-    throw new Error("MONGODB_URI is missing from the .env file");
+    throw new Error("MONGODB_URI is missing from the environment variables");
   }
 
-  // Give up after 15 seconds instead of waiting a long time
-  await mongoose.connect(process.env.MONGODB_URI, {
-    serverSelectionTimeoutMS: 15000
-  });
-
-  console.log("Connected with Database");
-};
-
-// Start the server only after the database is connected
-const startServer = async () => {
-  try {
-    await connectDB();
-
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+  if (!dbConnectionPromise) {
+    dbConnectionPromise = mongoose.connect(process.env.MONGODB_URI, {
+      serverSelectionTimeoutMS: 15000
     });
+  }
+
+  try {
+    await dbConnectionPromise;
+    console.log("Connected with Database");
   } catch (err) {
-    console.error("Not Connected with Database:", err.message);
-
-    // Help with the most common Atlas connection problems
-    const message = String(err.message);
-
-    if (
-      message.includes("SSL") ||
-      message.includes("ssl") ||
-      message.includes("ReplicaSetNoPrimary") ||
-      message.includes("Server selection timed out")
-    ) {
-      console.error(
-        "\nTry these, in order:\n" +
-          "1. Atlas > Network Access: add your current IP address (or 0.0.0.0/0 for testing).\n" +
-          "2. Atlas > Database: make sure the cluster is not paused.\n" +
-          "3. Try a phone hotspot, and turn off VPN or antivirus HTTPS scanning.\n" +
-          "4. Make sure Node is version 20 or higher (node -v)."
-      );
-    }
-
-    process.exit(1);
+    dbConnectionPromise = null;
+    throw err;
   }
 };
 
-startServer();
+if (!process.env.VERCEL) {
+  connectDB()
+    .then(() => {
+      app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+      });
+    })
+    .catch((err) => {
+      console.error("Not Connected with Database:", err.message);
+      process.exit(1);
+    });
+}
+
+export default app;
