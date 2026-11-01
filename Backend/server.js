@@ -210,7 +210,7 @@ console.log(
 );
 const PORT = process.env.PORT || 8080;
 
-let dbConnectionPromise = null;
+let dbConnectionPromise;
 
 const connectDB = async () => {
   if (mongoose.connection.readyState === 1) {
@@ -227,6 +227,13 @@ const connectDB = async () => {
     });
   }
 
+  try {
+    await dbConnectionPromise;
+    console.log("Connected with Database");
+  } catch (err) {
+    dbConnectionPromise = null;
+    throw err;
+  }
   try {
     await dbConnectionPromise;
     console.log("Connected with Database");
