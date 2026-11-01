@@ -1,0 +1,1044 @@
+
+
+.chats {
+    --gutter: 24px;
+
+    flex: 1;
+
+    width: 100%;
+    min-height: 0;
+
+    box-sizing: border-box;
+
+    /* Messages stay in a centred 900px column,
+       but the scrollbar sits at the window edge */
+    padding-block: 24px;
+    padding-inline: max(var(--gutter), calc((100% - 900px) / 2));
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.chats::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chats::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chats::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+}
+
+.chats::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.newChatMessage {
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+}
+
+
+.newChatMessage h1 {
+    margin: 0;
+
+    color: #f5f5f5;
+
+    font-size: clamp(2rem, 5vw, 3.5rem);
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+}
+
+
+.newChatMessage p {
+    margin: 14px 0 0;
+
+    color: #999;
+
+    font-size: 1rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   USER MESSAGE
+   ========================================================= */
+
+.userDiv {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    margin-bottom: 24px;
+
+    box-sizing: border-box;
+}
+
+
+.userMessage {
+    max-width: min(70%, 650px);
+
+    margin: 0;
+
+    padding: 11px 16px;
+
+    background: #323232;
+    color: #f5f5f5;
+
+    border-radius: 18px 18px 5px 18px;
+
+    font-size: 0.95rem;
+    line-height: 1.55;
+
+    white-space: pre-wrap;
+
+    word-break: break-word;
+    overflow-wrap: anywhere;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   AI / GPT MESSAGE
+   ========================================================= */
+
+.gptDiv {
+    width: 100%;
+    max-width: 100%;
+
+    display: block;
+
+    margin-bottom: 32px;
+
+    color: #e8e8e8;
+
+    font-size: 0.96rem;
+    line-height: 1.7;
+
+    word-break: break-word;
+    overflow-wrap: anywhere;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MARKDOWN PARAGRAPHS
+   ========================================================= */
+
+.gptDiv p {
+    margin: 0 0 14px;
+}
+
+.gptDiv p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+.gptDiv h1,
+.gptDiv h2,
+.gptDiv h3,
+.gptDiv h4 {
+    color: #ffffff;
+
+    line-height: 1.35;
+
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.gptDiv h1 {
+    font-size: 1.6rem;
+}
+
+.gptDiv h2 {
+    font-size: 1.35rem;
+}
+
+.gptDiv h3 {
+    font-size: 1.15rem;
+}
+
+.gptDiv h4 {
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   LISTS
+   ========================================================= */
+
+.gptDiv ul,
+.gptDiv ol {
+    margin: 12px 0;
+
+    padding-left: 28px;
+}
+
+.gptDiv li {
+    margin-bottom: 7px;
+
+    padding-left: 3px;
+}
+
+
+/* Nested lists */
+
+.gptDiv li > ul,
+.gptDiv li > ol {
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   INLINE CODE
+   ========================================================= */
+
+.gptDiv code:not(pre code) {
+    background: #2d2d2d;
+
+    color: #ffcc66;
+
+    padding: 3px 7px;
+
+    border-radius: 6px;
+
+    font-family:
+        "Fira Code",
+        "Consolas",
+        "Courier New",
+        monospace;
+
+    font-size: 0.88em;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   CODE BLOCK
+   (Chat.jsx wraps every <pre> in <div class="codeBlock">)
+   ========================================================= */
+
+.codeBlock {
+    position: relative;
+
+    margin: 18px 0;
+}
+
+
+.gptDiv pre {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background: #0d1117 !important;
+
+    border: 1px solid #30363d;
+
+    border-radius: 12px;
+
+    /* Extra space at the top for the Copy button */
+    padding: 38px 17px 17px;
+
+    margin: 0;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    white-space: pre;
+
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.28);
+}
+
+
+/* Code inside code block */
+
+.gptDiv pre code {
+    display: block;
+
+    background: transparent !important;
+
+    padding: 0;
+
+    color: inherit;
+
+    font-family:
+        "Fira Code",
+        "Consolas",
+        "Courier New",
+        monospace;
+
+    font-size: 0.86rem;
+
+    line-height: 1.65;
+
+    white-space: pre;
+
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
+
+/* Code scrollbar */
+
+.gptDiv pre::-webkit-scrollbar {
+    height: 7px;
+}
+
+.gptDiv pre::-webkit-scrollbar-track {
+    background: #161b22;
+}
+
+.gptDiv pre::-webkit-scrollbar-thumb {
+    background: #444;
+
+    border-radius: 10px;
+}
+
+
+/* Copy button */
+
+.copyBtn {
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+
+    z-index: 1;
+
+    padding: 4px 10px;
+
+    font-size: 12px;
+    font-family: inherit;
+
+    color: #e6edf3;
+
+    background: #2d333b;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    opacity: 0.8;
+}
+
+.copyBtn:hover {
+    opacity: 1;
+
+    background: #3b434d;
+}
+
+.copyBtn:focus-visible {
+    opacity: 1;
+
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   BLOCKQUOTE
+   ========================================================= */
+
+.gptDiv blockquote {
+    margin: 18px 0;
+
+    padding: 10px 16px;
+
+    border-left: 4px solid #666;
+
+    background: #1c1c1c;
+
+    color: #aaa;
+
+    border-radius: 0 6px 6px 0;
+}
+
+.gptDiv blockquote p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.gptDiv a {
+    color: #58a6ff;
+
+    text-decoration: none;
+
+    overflow-wrap: anywhere;
+}
+
+.gptDiv a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.gptDiv table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin: 18px 0;
+
+    display: block;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+
+    border-radius: 8px;
+}
+
+
+.gptDiv th,
+.gptDiv td {
+    border: 1px solid #444;
+
+    padding: 10px 12px;
+
+    text-align: left;
+}
+
+
+.gptDiv th {
+    background: #252525;
+
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+
+.gptDiv td {
+    background: #181818;
+
+    color: #ddd;
+}
+
+
+/* =========================================================
+   HORIZONTAL LINE
+   ========================================================= */
+
+.gptDiv hr {
+    border: none;
+
+    border-top: 1px solid #444;
+
+    margin: 25px 0;
+}
+
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+.gptDiv img {
+    max-width: 100%;
+
+    height: auto;
+
+    border-radius: 10px;
+
+    margin: 10px 0;
+}
+
+
+/* =========================================================
+   STRONG / EMPHASIS
+   ========================================================= */
+
+.gptDiv strong {
+    color: #ffffff;
+}
+
+.gptDiv em {
+    color: #d0d0d0;
+}
+/* =========================================================
+   STARTER CARDS ON AN EMPTY CHAT
+   ========================================================= */
+
+.starterGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+
+    width: 100%;
+    max-width: 640px;
+
+    margin-top: 28px;
+}
+
+.starterCard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 14px;
+
+    font-family: inherit;
+    text-align: left;
+
+    color: #e0e0e0;
+
+    background: #1b1b1b;
+
+    border: 1px solid #2f2f2f;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.starterCard:hover {
+    background: #242424;
+
+    border-color: #4a4a4a;
+
+    transform: translateY(-2px);
+}
+
+.starterCard:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+.starterIcon {
+    font-size: 1.5rem;
+}
+
+.starterText {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.starterText strong {
+    font-size: 0.9rem;
+
+    color: #ffffff;
+}
+
+.starterText small {
+    display: -webkit-box;
+
+    overflow: hidden;
+
+    font-size: 0.76rem;
+    line-height: 1.4;
+
+    color: #8e8e8e;
+
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+@media (max-width: 600px) {
+
+    .starterGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .starterCard {
+        transition: none;
+    }
+
+    .starterCard:hover {
+        transform: none;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .chats {
+        --gutter: 20px;
+    }
+
+    .userMessage {
+        max-width: 75%;
+    }
+
+    .gptDiv {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .chats {
+        --gutter: 16px;
+
+        padding-block: 20px;
+    }
+
+
+    .newChatMessage {
+        padding: 15px;
+    }
+
+    .newChatMessage h1 {
+        font-size: 2.2rem;
+    }
+
+    .newChatMessage p {
+        font-size: 0.95rem;
+    }
+
+
+    .userDiv {
+        margin-bottom: 20px;
+    }
+
+
+    .userMessage {
+        max-width: 82%;
+
+        padding: 10px 14px;
+
+        font-size: 0.92rem;
+
+        border-radius:
+            16px
+            16px
+            4px
+            16px;
+    }
+
+
+    .gptDiv {
+        font-size: 0.93rem;
+
+        line-height: 1.65;
+
+        margin-bottom: 26px;
+    }
+
+
+    .gptDiv h1 {
+        font-size: 1.4rem;
+    }
+
+    .gptDiv h2 {
+        font-size: 1.2rem;
+    }
+
+    .gptDiv h3 {
+        font-size: 1.05rem;
+    }
+
+
+    .codeBlock {
+        margin: 15px 0;
+    }
+
+
+    .gptDiv pre {
+        padding: 36px 13px 13px;
+
+        border-radius: 9px;
+    }
+
+
+    .gptDiv pre code {
+        font-size: 0.8rem;
+
+        line-height: 1.55;
+    }
+
+
+    .gptDiv ul,
+    .gptDiv ol {
+        padding-left: 23px;
+    }
+
+
+    .gptDiv table {
+        font-size: 0.82rem;
+    }
+
+
+    .gptDiv th,
+    .gptDiv td {
+        padding: 8px 10px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .chats {
+        --gutter: 11px;
+
+        padding-block: 16px;
+    }
+
+
+    .newChatMessage h1 {
+        font-size: 1.8rem;
+    }
+
+    .newChatMessage p {
+        font-size: 0.88rem;
+    }
+
+
+    .userMessage {
+        max-width: 88%;
+
+        padding: 9px 12px;
+
+        font-size: 0.88rem;
+
+        line-height: 1.5;
+    }
+
+
+    .gptDiv {
+        font-size: 0.9rem;
+
+        line-height: 1.6;
+    }
+
+
+    .gptDiv h1 {
+        font-size: 1.25rem;
+    }
+
+    .gptDiv h2 {
+        font-size: 1.12rem;
+    }
+
+    .gptDiv h3 {
+        font-size: 1rem;
+    }
+
+
+    .codeBlock {
+        margin: 13px 0;
+    }
+
+
+    .gptDiv pre {
+        padding: 34px 11px 11px;
+
+        border-radius: 8px;
+    }
+
+
+    .gptDiv pre code {
+        font-size: 0.74rem;
+
+        line-height: 1.5;
+    }
+
+
+    .gptDiv ul,
+    .gptDiv ol {
+        padding-left: 20px;
+    }
+
+
+    .gptDiv li {
+        margin-bottom: 5px;
+    }
+
+
+    .gptDiv blockquote {
+        padding: 8px 12px;
+
+        margin: 14px 0;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .chats {
+        --gutter: 8px;
+    }
+
+
+    .userMessage {
+        max-width: 92%;
+
+        font-size: 0.86rem;
+    }
+
+
+    .gptDiv {
+        font-size: 0.86rem;
+    }
+
+
+    .gptDiv pre {
+        padding: 32px 9px 9px;
+    }
+
+
+    .gptDiv pre code {
+        font-size: 0.7rem;
+    }
+}
+/* =========================================================
+   MESSAGES WITH ATTACHMENTS
+   ========================================================= */
+
+.userBubbleWrap {
+    max-width: min(70%, 650px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.userBubbleWrap .userMessage {
+    max-width: 100%;
+}
+
+.msgAttachments {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.msgImageLink {
+    display: block;
+
+    line-height: 0;
+}
+
+.msgImage {
+    display: block;
+
+    max-width: 240px;
+    max-height: 200px;
+
+    width: auto;
+    height: auto;
+
+    object-fit: cover;
+
+    background: #2a2a2a;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 12px;
+}
+
+.msgImage.placeholder {
+    width: 160px;
+    height: 120px;
+}
+
+.msgFile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    max-width: 260px;
+
+    padding: 9px 12px;
+
+    font-size: 0.85rem;
+
+    color: #e8e8e8;
+
+    background: #2a2a2a;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 12px;
+}
+
+.msgFile i {
+    font-size: 1.1rem;
+
+    color: #aeb1ff;
+}
+
+.msgFile.missing,
+.msgFile.missing i {
+    color: #9a9a9a;
+}
+
+.msgFileInfo {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.msgFileName {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.msgFileSize {
+    font-size: 0.72rem;
+
+    color: #8e8e8e;
+}
+
+
+/* =========================================================
+   COPY AND READ ALOUD BUTTONS UNDER A REPLY
+   ========================================================= */
+
+.msgActions {
+    display: flex;
+    gap: 6px;
+
+    margin-top: 10px;
+
+    opacity: 0;
+
+    transition: opacity 0.2s ease;
+}
+
+.gptDiv:hover .msgActions,
+.msgActions:focus-within,
+.msgActions.active {
+    opacity: 1;
+}
+
+.msgActions button {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.8rem;
+
+    color: #9a9a9a;
+
+    background: transparent;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.msgActions button:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.msgActions button:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 1px;
+}
+
+@media (hover: none) {
+
+    .msgActions {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .userBubbleWrap {
+        max-width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .userBubbleWrap {
+        max-width: 82%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .userBubbleWrap {
+        max-width: 88%;
+    }
+
+    .msgImage {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .userBubbleWrap {
+        max-width: 92%;
+    }
+}

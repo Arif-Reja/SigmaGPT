@@ -1,0 +1,788 @@
+/* =========================================================
+   WINDOW SIZE
+   ========================================================= */
+
+.modalOverlay .modalDialog:has(.visualizer) {
+    max-width: 1000px;
+}
+
+
+/* =========================================================
+   VISUALIZE BUTTON UNDER A REPLY
+   ========================================================= */
+
+.msgActions button.vizAction {
+    width: auto;
+
+    gap: 6px;
+
+    padding: 0 12px;
+
+    font-size: 0.78rem;
+    font-family: inherit;
+
+    color: #c7c9ff;
+
+    background: rgba(99, 102, 241, 0.14);
+
+    border: 1px solid rgba(99, 102, 241, 0.35);
+
+    border-radius: 999px;
+}
+
+.msgActions button.vizAction:hover {
+    color: #ffffff;
+
+    background: rgba(99, 102, 241, 0.28);
+}
+
+/* Always show the row when it has a Visualize button */
+.msgActions:has(.vizAction) {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+
+.visualizer {
+    color: #e0e0e0;
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.vzControls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px 18px;
+
+    margin-bottom: 14px;
+}
+
+.vzField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    min-width: 0;
+
+    font-size: 0.78rem;
+
+    color: #9a9a9a;
+}
+
+.vzField.grow {
+    flex: 1;
+}
+
+.vzField select,
+.vzField input[type="text"] {
+    padding: 8px 10px;
+
+    font-size: 0.88rem;
+    font-family: inherit;
+
+    color: #f5f5f5;
+
+    background: #2a2a2a;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 8px;
+
+    outline: none;
+}
+
+.vzField select:focus-visible,
+.vzField input[type="text"]:focus-visible {
+    border-color: #8ab4f8;
+}
+
+.vzField input[type="range"] {
+    width: 150px;
+
+    accent-color: #6366f1;
+}
+
+.vzChips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.vzChip {
+    padding: 7px 12px;
+
+    font-size: 0.8rem;
+    font-family: inherit;
+
+    color: #d6d6d6;
+
+    background: #2a2a2a;
+
+    border: 1px solid #3f3f3f;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+
+.vzChip:hover {
+    color: #ffffff;
+
+    background: #343434;
+}
+
+.vzTarget {
+    width: 58px;
+
+    text-align: center;
+}
+
+.vzCustom {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+
+    flex: 1 1 280px;
+
+    min-width: 0;
+}
+
+.vzError {
+    margin: 0 0 12px;
+    padding: 8px 12px;
+
+    color: #ffb4b4;
+
+    background: #3a1f1f;
+
+    border: 1px solid #6b2c2c;
+
+    border-radius: 8px;
+}
+
+.vzNote {
+    margin: 0 0 12px;
+
+    font-size: 0.82rem;
+
+    color: #aeb1ff;
+}
+
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.vzLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 16px;
+
+    align-items: start;
+}
+
+.vzStage {
+    padding: 14px;
+
+    background: #161616;
+
+    border: 1px solid #2a2a2a;
+
+    border-radius: 14px;
+}
+
+.vzStageHead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 14px;
+}
+
+.vzStageHead strong {
+    font-size: 1rem;
+
+    color: #ffffff;
+}
+
+.vzStats {
+    display: flex;
+    gap: 16px;
+
+    font-size: 0.8rem;
+
+    color: #8e8e8e;
+}
+
+.vzStats b {
+    margin-left: 4px;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   BARS (sorting)
+   ========================================================= */
+
+.vzBars {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+
+    height: 260px;
+
+    padding-top: 22px;
+
+    box-sizing: border-box;
+}
+
+.vzBar {
+    position: relative;
+
+    flex: 1;
+
+    min-width: 0;
+
+    background: #6670d9;
+
+    border-radius: 4px 4px 0 0;
+
+    transition:
+        height 0.2s ease,
+        background-color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.vzBarValue {
+    position: absolute;
+
+    bottom: 100%;
+    left: -2px;
+    right: -2px;
+
+    margin-bottom: 3px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    color: #b4b4b4;
+
+    pointer-events: none;
+}
+
+.vzBars.dense .vzBarValue {
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   CELLS (searching)
+   ========================================================= */
+
+.vzCells {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+
+    margin-top: 12px;
+    padding: 6px 2px 8px;
+
+    overflow-x: auto;
+}
+
+.vzCellWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    flex: 1 1 0;
+
+    min-width: 30px;
+    max-width: 54px;
+}
+
+.vzCell {
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    height: 48px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+    background: #6670d9;
+
+    border-radius: 8px;
+
+    transition:
+        background-color 0.2s ease,
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.vzCell.compare {
+    transform: translateY(-4px);
+}
+
+.vzIndex {
+    font-size: 0.7rem;
+
+    color: #6f6f6f;
+}
+
+.vzPointer {
+    min-height: 16px;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    color: #aeb1ff;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   COLOURS FOR EVERY STATE
+   ========================================================= */
+
+.vzBar.compare,
+.vzCell.compare,
+.vzSwatch.compare {
+    background: #f5d68a;
+
+    color: #1b1b1b;
+}
+
+.vzBar.swap,
+.vzSwatch.swap {
+    background: #ff7b72;
+}
+
+.vzBar.pivot,
+.vzSwatch.pivot {
+    background: #c084fc;
+}
+
+.vzBar.sorted,
+.vzSwatch.sorted {
+    background: #4cc38a;
+}
+
+.vzBar.found,
+.vzCell.found,
+.vzSwatch.found {
+    background: #4cc38a;
+
+    box-shadow: 0 0 0 3px rgba(76, 195, 138, 0.3);
+}
+
+.vzBar.dim,
+.vzCell.dim,
+.vzSwatch.dim {
+    opacity: 0.3;
+}
+
+
+/* =========================================================
+   MESSAGE AND LEGEND
+   ========================================================= */
+
+.vzMessage {
+    min-height: 3em;
+
+    margin: 12px 0 10px;
+
+    color: #f0f0f0;
+}
+
+.vzLegend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+
+    font-size: 0.74rem;
+
+    color: #8e8e8e;
+}
+
+.vzLegend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.vzSwatch {
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+
+    background: #6670d9;
+
+    border-radius: 3px;
+}
+
+
+/* =========================================================
+   PLAYBACK
+   ========================================================= */
+
+.vzPlayback {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 14px;
+}
+
+.vzBtn {
+    display: grid;
+    place-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    color: #e0e0e0;
+
+    background: #2a2a2a;
+
+    border: 1px solid #3f3f3f;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.vzBtn:hover:not(:disabled) {
+    background: #3a3a3a;
+}
+
+.vzBtn:disabled {
+    opacity: 0.4;
+
+    cursor: not-allowed;
+}
+
+.vzBtn.play {
+    width: 46px;
+    height: 46px;
+
+    color: #212121;
+
+    background: #ffffff;
+
+    border-color: #ffffff;
+}
+
+.vzBtn.play:hover {
+    background: #f0f0f0;
+}
+
+.vzSpeed {
+    display: flex;
+    gap: 4px;
+
+    margin-left: auto;
+
+    padding: 3px;
+
+    background: #202020;
+
+    border: 1px solid #2f2f2f;
+
+    border-radius: 999px;
+}
+
+.vzSpeed button {
+    padding: 4px 9px;
+
+    font-size: 0.74rem;
+    font-family: inherit;
+
+    color: #9a9a9a;
+
+    background: none;
+
+    border: none;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+}
+
+.vzSpeed button:hover {
+    color: #ffffff;
+}
+
+.vzSpeed button.active {
+    color: #ffffff;
+
+    background: #4a4fc4;
+}
+
+.vzScrub {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 12px;
+
+    font-size: 0.78rem;
+
+    color: #8e8e8e;
+}
+
+.vzScrub input {
+    flex: 1;
+
+    accent-color: #6366f1;
+}
+
+.vzScrub span {
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CODE AND FACTS
+   ========================================================= */
+
+.vzPanel {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+
+    background: #161616;
+
+    border: 1px solid #2a2a2a;
+
+    border-radius: 14px;
+}
+
+.vzPanel h4 {
+    margin: 0 0 10px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    color: #8e8e8e;
+}
+
+.vzCode {
+    margin: 0;
+    padding: 0;
+
+    overflow-x: auto;
+
+    list-style: none;
+
+    counter-reset: vzline;
+
+    font-family: "Fira Code", "Consolas", "Courier New", monospace;
+    font-size: 0.76rem;
+    line-height: 1.7;
+}
+
+.vzCode li {
+    display: flex;
+
+    padding: 0 8px;
+
+    counter-increment: vzline;
+
+    color: #c9d1d9;
+
+    border-radius: 6px;
+
+    white-space: pre;
+}
+
+.vzCode li::before {
+    content: counter(vzline);
+
+    flex-shrink: 0;
+
+    width: 20px;
+    margin-right: 12px;
+
+    text-align: right;
+
+    color: #5f5f5f;
+}
+
+.vzCode li.active {
+    color: #ffffff;
+
+    background: rgba(245, 214, 138, 0.16);
+
+    box-shadow: inset 3px 0 0 #f5d68a;
+}
+
+.vzCode code {
+    font-family: inherit;
+}
+
+.vzAbout {
+    margin: 0 0 12px;
+
+    color: #cfcfcf;
+}
+
+.vzComplexity {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+
+    margin: 0;
+}
+
+.vzComplexity div {
+    padding: 8px 10px;
+
+    background: #202020;
+
+    border: 1px solid #2c2c2c;
+
+    border-radius: 10px;
+}
+
+.vzComplexity dt {
+    font-size: 0.7rem;
+
+    color: #8e8e8e;
+}
+
+.vzComplexity dd {
+    margin: 2px 0 0;
+
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+.vzTag {
+    display: inline-block;
+
+    margin: 12px 0 0;
+    padding: 3px 10px;
+
+    font-size: 0.74rem;
+
+    color: #c7c9ff;
+
+    background: rgba(99, 102, 241, 0.12);
+
+    border: 1px solid rgba(99, 102, 241, 0.3);
+
+    border-radius: 999px;
+}
+
+.vzAsk {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+
+    padding: 10px 14px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+
+    color: #c7c9ff;
+
+    background: rgba(99, 102, 241, 0.14);
+
+    border: 1px solid rgba(99, 102, 241, 0.4);
+
+    border-radius: 12px;
+
+    cursor: pointer;
+}
+
+.vzAsk:hover {
+    background: rgba(99, 102, 241, 0.26);
+}
+
+
+/* =========================================================
+   KEYBOARD FOCUS
+   ========================================================= */
+
+.vzChip:focus-visible,
+.vzBtn:focus-visible,
+.vzSpeed button:focus-visible,
+.vzAsk:focus-visible,
+.vzField input[type="range"]:focus-visible,
+.vzScrub input:focus-visible,
+.msgActions button.vizAction:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 860px) {
+
+    .vzLayout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .vzBars {
+        height: 210px;
+    }
+
+    .vzSpeed {
+        margin-left: 0;
+    }
+
+    .vzCustom {
+        flex-wrap: wrap;
+    }
+
+    .vzField input[type="range"] {
+        width: 120px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .vzBar,
+    .vzCell,
+    .vzBtn,
+    .msgActions button.vizAction {
+        transition: none;
+    }
+
+    .vzCell.compare {
+        transform: none;
+    }
+}

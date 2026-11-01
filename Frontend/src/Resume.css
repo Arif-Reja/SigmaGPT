@@ -1,0 +1,668 @@
+/* =========================================================
+   BAR ABOVE THE MODE CARDS (Interview mode only)
+   ========================================================= */
+
+.resumeBar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+
+    width: calc(100% - 40px);
+    max-width: 850px;
+
+    margin: 0 auto 8px;
+    padding: 9px 14px;
+
+    font-size: 13px;
+
+    color: #d6d6d6;
+
+    background: #202020;
+
+    border: 1px solid #333333;
+
+    border-radius: 12px;
+
+    flex-shrink: 0;
+
+    box-sizing: border-box;
+}
+
+.resumeBarMain {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    flex: 1;
+
+    min-width: 200px;
+}
+
+.resumeBarMain > i {
+    color: #aeb1ff;
+}
+
+.resumeBarTitle {
+    font-weight: 600;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+}
+
+.resumeBarMeta {
+    min-width: 0;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: #8e8e8e;
+}
+
+.resumeBarError {
+    flex-basis: 100%;
+
+    color: #ffb4b4;
+}
+
+.resumeBtn {
+    padding: 5px 14px;
+
+    font-size: 12.5px;
+    font-weight: 600;
+    font-family: inherit;
+
+    color: #d6d6d6;
+
+    background: #2d2d2d;
+
+    border: 1px solid #444444;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+}
+
+.resumeBtn:hover {
+    color: #ffffff;
+
+    background: #383838;
+}
+
+.resumeBtn.primary {
+    color: #212121;
+
+    background: #ffffff;
+
+    border-color: #ffffff;
+}
+
+.resumeBtn.primary:hover {
+    background: #f0f0f0;
+}
+
+.resumeBtn:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+
+/* ----- On / off switch ----- */
+
+.resumeSwitch {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.resumeSwitch input {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    opacity: 0;
+}
+
+.resumeSlider {
+    position: relative;
+
+    width: 34px;
+    height: 20px;
+
+    background: #4a4a4a;
+
+    border-radius: 999px;
+
+    transition: background 0.2s ease;
+}
+
+.resumeSlider::after {
+    content: "";
+
+    position: absolute;
+
+    top: 2px;
+    left: 2px;
+
+    width: 16px;
+    height: 16px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    transition: transform 0.2s ease;
+}
+
+.resumeSwitch input:checked + .resumeSlider {
+    background: #6366f1;
+}
+
+.resumeSwitch input:checked + .resumeSlider::after {
+    transform: translateX(14px);
+}
+
+.resumeSwitch input:focus-visible + .resumeSlider {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   SETUP WINDOW
+   ========================================================= */
+
+.rsSetup,
+.rsSection {
+    color: #e0e0e0;
+}
+
+.rsSection {
+    margin-bottom: 22px;
+}
+
+.rsSection h4 {
+    margin: 0 0 10px;
+
+    font-size: 0.74rem;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    color: #8e8e8e;
+}
+
+.rsDrop {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+
+    padding: 26px 16px;
+
+    font-family: inherit;
+
+    color: #9a9a9a;
+
+    background: #1f1f1f;
+
+    border: 2px dashed #3c3c3c;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.rsDrop:hover,
+.rsDrop.dragging {
+    background: #242424;
+
+    border-color: #6366f1;
+}
+
+.rsDrop:disabled {
+    cursor: wait;
+}
+
+.rsDrop i {
+    font-size: 1.6rem;
+
+    color: #aeb1ff;
+}
+
+.rsDrop strong {
+    color: #ffffff;
+}
+
+.rsDrop span {
+    font-size: 0.8rem;
+}
+
+.rsFile {
+    padding: 12px 14px;
+
+    background: #202020;
+
+    border: 1px solid #2c2c2c;
+
+    border-radius: 12px;
+}
+
+.rsFileTop {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+}
+
+.rsFileTop > i {
+    font-size: 1.3rem;
+
+    color: #aeb1ff;
+}
+
+.rsFileInfo {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 160px;
+}
+
+.rsFileInfo strong {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: #ffffff;
+}
+
+.rsFileInfo small {
+    color: #8e8e8e;
+}
+
+.rsLink {
+    padding: 4px 8px;
+
+    font-size: 0.82rem;
+    font-family: inherit;
+
+    color: #c7c9ff;
+
+    background: none;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.rsLink:hover:not(:disabled) {
+    background: rgba(99, 102, 241, 0.14);
+}
+
+.rsLink.danger {
+    color: #ff9b9b;
+}
+
+.rsLink.danger:hover:not(:disabled) {
+    background: rgba(255, 107, 107, 0.12);
+}
+
+.rsLink:disabled {
+    opacity: 0.5;
+
+    cursor: wait;
+}
+
+.rsPreview {
+    margin-top: 10px;
+
+    font-size: 0.82rem;
+
+    color: #9a9a9a;
+}
+
+.rsPreview summary {
+    cursor: pointer;
+}
+
+.rsPreview pre {
+    max-height: 180px;
+
+    margin: 8px 0 0;
+    padding: 10px 12px;
+
+    overflow: auto;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    font-family: "Fira Code", "Consolas", "Courier New", monospace;
+    font-size: 0.78rem;
+    line-height: 1.5;
+
+    color: #d0d0d0;
+
+    background: #141414;
+
+    border: 1px solid #2a2a2a;
+
+    border-radius: 8px;
+}
+
+
+/* ----- Fields ----- */
+
+.rsField {
+    display: block;
+
+    margin-bottom: 12px;
+}
+
+.rsField > span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 0.82rem;
+
+    color: #b4b4b4;
+}
+
+.rsField input,
+.rsField textarea {
+    width: 100%;
+
+    padding: 10px 12px;
+
+    font-size: 0.9rem;
+    font-family: inherit;
+
+    color: #f5f5f5;
+
+    background: #2a2a2a;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    box-sizing: border-box;
+}
+
+.rsField textarea {
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+.rsField input:focus,
+.rsField textarea:focus {
+    border-color: #6a6a6a;
+}
+
+.rsCount {
+    display: block;
+
+    margin-top: 4px;
+
+    text-align: right;
+
+    color: #7d7d7d;
+}
+
+.rsCheck {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 16px;
+
+    font-size: 0.9rem;
+
+    cursor: pointer;
+}
+
+.rsCheck input {
+    width: 16px;
+    height: 16px;
+
+    accent-color: #6366f1;
+
+    cursor: pointer;
+}
+
+.rsHint {
+    margin: 10px 0 0;
+
+    font-size: 0.78rem;
+    line-height: 1.5;
+
+    color: #7d7d7d;
+}
+
+
+/* ----- Buttons ----- */
+
+.rsActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 6px;
+}
+
+.rsPrimary,
+.rsSecondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 10px 18px;
+
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: inherit;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.rsPrimary {
+    color: #212121;
+
+    background: #ffffff;
+
+    border: 1px solid #ffffff;
+}
+
+.rsPrimary:hover:not(:disabled) {
+    background: #f0f0f0;
+}
+
+.rsSecondary {
+    color: #e0e0e0;
+
+    background: transparent;
+
+    border: 1px solid #3f3f3f;
+}
+
+.rsSecondary:hover:not(:disabled) {
+    background: #2a2a2a;
+}
+
+.rsPrimary:disabled,
+.rsSecondary:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+}
+
+.rsPrimary:focus-visible,
+.rsSecondary:focus-visible,
+.rsLink:focus-visible,
+.rsDrop:focus-visible,
+.rsPreview summary:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   FEEDBACK VIEW
+   ========================================================= */
+
+.rsChips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.rsChips span {
+    padding: 4px 12px;
+
+    font-size: 0.8rem;
+
+    color: #f5d68a;
+
+    background: rgba(245, 214, 138, 0.1);
+
+    border: 1px solid rgba(245, 214, 138, 0.3);
+
+    border-radius: 999px;
+}
+
+.rsRewrite {
+    margin-bottom: 12px;
+    padding: 12px;
+
+    background: #202020;
+
+    border: 1px solid #2c2c2c;
+
+    border-radius: 12px;
+}
+
+.rsRewrite span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.rsRewrite p {
+    margin: 0;
+
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.rsBefore span {
+    color: #ff9b9b;
+}
+
+.rsBefore p {
+    color: #a8a8a8;
+}
+
+.rsAfter {
+    margin-top: 10px;
+}
+
+.rsAfter span {
+    color: #7ee787;
+}
+
+.rsAfter p {
+    color: #ffffff;
+}
+
+.rsRewrite small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #8e8e8e;
+}
+
+.rsQuestions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin: 0;
+    padding-left: 22px;
+}
+
+.rsQuestions li {
+    padding-left: 4px;
+
+    color: #e0e0e0;
+}
+
+.rsActions + .scError {
+    margin-top: 14px;
+}
+
+
+/* =========================================================
+   SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .resumeBar {
+        width: calc(100% - 24px);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .rsPrimary,
+    .rsSecondary {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .resumeSlider,
+    .resumeSlider::after {
+        transition: none;
+    }
+}

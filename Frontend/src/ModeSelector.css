@@ -1,0 +1,245 @@
+.modeSelector {
+    width: 100%;
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    padding: 0 20px 20px;
+
+    box-sizing: border-box;
+}
+
+
+.modeTitle {
+    color: #999;
+
+    font-size: 0.85rem;
+
+    margin-bottom: 10px;
+
+    padding-left: 3px;
+}
+
+
+.modeContainer {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+.modeCard {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #333;
+
+    border-radius: 12px;
+
+    background: #202020;
+
+    color: #ddd;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    min-width: 0;
+
+    transition:
+        background 0.2s ease,
+        border 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.modeCard:hover {
+    background: #292929;
+
+    border-color: #555;
+
+    transform: translateY(-2px);
+}
+
+
+.modeCard:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+
+.modeCard.active {
+    background: #2d2d2d;
+
+    border-color: #666;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.modeIcon {
+    font-size: 1.4rem;
+
+    flex-shrink: 0;
+}
+
+
+.modeInfo {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+.modeName {
+    color: #fff;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+}
+
+
+.modeDescription {
+    color: #888;
+
+    font-size: 0.7rem;
+
+    margin-top: 2px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* Socratic mode toggle */
+
+.socraticToggle {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 10px;
+
+    padding-left: 3px;
+
+    font-size: 0.8rem;
+
+    color: #c9c9c9;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+
+.socraticToggle input {
+    width: 15px;
+
+    height: 15px;
+
+    accent-color: #8ab4f8;
+
+    cursor: pointer;
+}
+
+
+/* Small laptop screens: keep the selector compact */
+
+@media (max-height: 760px) {
+
+    .modeTitle {
+        display: none;
+    }
+
+    .modeCard {
+        padding: 8px 12px;
+    }
+
+    .modeDescription {
+        display: none;
+    }
+
+    .modeSelector {
+        padding-bottom: 12px;
+    }
+}
+
+
+/* Tablet */
+
+@media (max-width: 800px) {
+
+    .modeContainer {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+    .modeSelector {
+        padding: 0 12px 15px;
+    }
+
+    .modeContainer {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 8px;
+    }
+
+    .modeCard {
+        padding: 9px;
+
+        gap: 7px;
+    }
+
+    .modeIcon {
+        font-size: 1.2rem;
+    }
+
+    .modeName {
+        font-size: 0.8rem;
+    }
+
+    .modeDescription {
+        display: none;
+    }
+}
+
+
+/* Respect users who turn animations off */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .modeCard {
+        transition: none;
+    }
+
+    .modeCard:hover {
+        transform: none;
+    }
+}

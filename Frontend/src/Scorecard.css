@@ -1,0 +1,854 @@
+/* =========================================================
+   FINISH BAR (above the mode cards)
+   ========================================================= */
+
+.interviewBar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+
+    width: calc(100% - 40px);
+    max-width: 850px;
+
+    margin: 0 auto 8px;
+    padding: 9px 14px;
+
+    font-size: 13px;
+
+    color: #d6d6d6;
+
+    background: rgba(99, 102, 241, 0.1);
+
+    border: 1px solid rgba(99, 102, 241, 0.35);
+
+    border-radius: 12px;
+
+    flex-shrink: 0;
+
+    box-sizing: border-box;
+}
+
+.interviewBarText {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    flex: 1;
+
+    min-width: 180px;
+}
+
+.interviewBarText i {
+    color: #aeb1ff;
+}
+
+.interviewBarBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 6px 14px;
+
+    font-size: 12.5px;
+    font-weight: 600;
+    font-family: inherit;
+
+    color: #212121;
+
+    background: #ffffff;
+
+    border: none;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+}
+
+.interviewBarBtn:hover:not(:disabled) {
+    background: #f0f0f0;
+}
+
+.interviewBarBtn:disabled {
+    opacity: 0.75;
+
+    cursor: wait;
+}
+
+.interviewBarBtn:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+.interviewBarError {
+    flex-basis: 100%;
+
+    color: #ffb4b4;
+}
+
+
+/* =========================================================
+   SIDEBAR BUTTON
+   ========================================================= */
+
+.progressBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: calc(100% - 24px);
+
+    margin: 0 12px 8px;
+    padding: 10px 12px;
+
+    font-size: 14px;
+    font-family: inherit;
+    text-align: left;
+
+    color: #cfcfcf;
+
+    background: transparent;
+
+    border: 1px solid #2f2f2f;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.progressBtn:hover {
+    color: #ffffff;
+
+    background: #242424;
+
+    border-color: #444444;
+}
+
+.progressBtn:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+.progressBtn i {
+    color: #aeb1ff;
+}
+
+
+/* =========================================================
+   SCORECARD
+   ========================================================= */
+
+.scorecard {
+    color: #e0e0e0;
+
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.scHeader {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    margin-bottom: 8px;
+}
+
+.scRing {
+    --ring: #7ee787;
+
+    position: relative;
+
+    width: 96px;
+    height: 96px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+    align-content: center;
+
+    background: conic-gradient(
+        var(--ring) calc(var(--pct) * 1%),
+        #2a2a2a 0
+    );
+
+    border-radius: 50%;
+}
+
+.scRing.mid {
+    --ring: #f5d68a;
+}
+
+.scRing.low {
+    --ring: #ff8a8a;
+}
+
+.scRing::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 8px;
+
+    background: #1b1b1b;
+
+    border-radius: 50%;
+}
+
+.scRing strong,
+.scRing span {
+    position: relative;
+
+    line-height: 1.1;
+}
+
+.scRing strong {
+    font-size: 1.7rem;
+
+    color: #ffffff;
+}
+
+.scRing span {
+    font-size: 0.7rem;
+
+    color: #8e8e8e;
+}
+
+.scGrade {
+    display: inline-block;
+
+    padding: 2px 10px;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    border-radius: 999px;
+}
+
+.scGrade.good,
+.scBadge.good {
+    color: #7ee787;
+
+    background: rgba(126, 231, 135, 0.12);
+}
+
+.scGrade.mid,
+.scBadge.mid {
+    color: #f5d68a;
+
+    background: rgba(245, 214, 138, 0.12);
+}
+
+.scGrade.low,
+.scBadge.low {
+    color: #ff9b9b;
+
+    background: rgba(255, 107, 107, 0.12);
+}
+
+.scHeaderText h3 {
+    margin: 8px 0 2px;
+
+    font-size: 1.25rem;
+
+    color: #ffffff;
+}
+
+.scMeta {
+    margin: 0;
+
+    font-size: 0.8rem;
+
+    color: #8e8e8e;
+}
+
+.scSection {
+    margin-top: 22px;
+}
+
+.scSection h4 {
+    margin: 0 0 10px;
+
+    font-size: 0.74rem;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    color: #8e8e8e;
+}
+
+.scSummary {
+    margin: 0;
+
+    color: #d6d6d6;
+}
+
+
+/* ----- Skill bars ----- */
+
+.scBarRow {
+    margin-bottom: 12px;
+}
+
+.scBarLabel {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 5px;
+
+    font-size: 0.85rem;
+}
+
+.scBarLabel strong {
+    color: #ffffff;
+}
+
+.scBar {
+    height: 8px;
+
+    overflow: hidden;
+
+    background: #2a2a2a;
+
+    border-radius: 999px;
+}
+
+.scBar span {
+    display: block;
+
+    height: 100%;
+
+    border-radius: 999px;
+
+    transition: width 0.5s ease;
+}
+
+.scBar span.good {
+    background: #7ee787;
+}
+
+.scBar span.mid {
+    background: #f5d68a;
+}
+
+.scBar span.low {
+    background: #ff8a8a;
+}
+
+.scBarRow small {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 0.74rem;
+
+    color: #7d7d7d;
+}
+
+
+/* ----- Lists ----- */
+
+.scList {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.scList li {
+    display: flex;
+    gap: 10px;
+
+    margin-bottom: 8px;
+}
+
+.scList i {
+    margin-top: 4px;
+
+    font-size: 0.85rem;
+}
+
+.scList.good i {
+    color: #7ee787;
+}
+
+.scList.warn i {
+    color: #f5d68a;
+}
+
+.scStudy {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.scStudyItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+
+    padding: 10px 12px;
+
+    background: #202020;
+
+    border: 1px solid #2c2c2c;
+
+    border-radius: 12px;
+}
+
+.scStudyItem strong {
+    color: #ffffff;
+}
+
+.scStudyItem p {
+    margin: 2px 0 0;
+
+    font-size: 0.82rem;
+
+    color: #9a9a9a;
+}
+
+.scPracticeBtn,
+.scListenBtn {
+    flex-shrink: 0;
+
+    padding: 6px 14px;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: inherit;
+
+    color: #c7c9ff;
+
+    background: rgba(99, 102, 241, 0.14);
+
+    border: 1px solid rgba(99, 102, 241, 0.4);
+
+    border-radius: 999px;
+
+    cursor: pointer;
+}
+
+.scPracticeBtn:hover,
+.scListenBtn:hover {
+    background: rgba(99, 102, 241, 0.26);
+}
+
+.scPracticeBtn:focus-visible,
+.scListenBtn:focus-visible,
+.scToggle:focus-visible,
+.scBack:focus-visible,
+.scDelete:focus-visible,
+.historyRow:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+.scListenBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.scActions {
+    margin-top: 22px;
+}
+
+
+/* ----- Question by question ----- */
+
+.scToggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 4px 0;
+
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: inherit;
+
+    color: #d6d6d6;
+
+    background: none;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+.scToggle:hover {
+    color: #ffffff;
+}
+
+.scToggle i {
+    width: 12px;
+
+    font-size: 0.75rem;
+
+    color: #8e8e8e;
+}
+
+.scQuestions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin: 12px 0 0;
+    padding-left: 22px;
+}
+
+.scQuestions li {
+    padding: 4px 0 4px 4px;
+}
+
+.scQuestionHead {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+
+    color: #ffffff;
+}
+
+.scQuestions p {
+    margin: 4px 0 0;
+
+    font-size: 0.85rem;
+
+    color: #a8a8a8;
+}
+
+.scBadge {
+    flex-shrink: 0;
+
+    padding: 2px 10px;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    border-radius: 999px;
+}
+
+
+/* =========================================================
+   PROGRESS SCREEN
+   ========================================================= */
+
+.progressStats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.statBox {
+    padding: 12px 14px;
+
+    background: #202020;
+
+    border: 1px solid #2c2c2c;
+
+    border-radius: 12px;
+}
+
+.statBox span {
+    display: block;
+
+    font-size: 0.74rem;
+
+    color: #8e8e8e;
+}
+
+.statBox strong {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 1.5rem;
+
+    color: #ffffff;
+}
+
+.delta {
+    margin-left: 8px;
+
+    font-size: 0.72rem;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.delta.up {
+    color: #7ee787;
+}
+
+.delta.down {
+    color: #ff9b9b;
+}
+
+.trendChart {
+    display: block;
+
+    width: 100%;
+    height: auto;
+}
+
+.trendLabel {
+    font-size: 11px;
+
+    fill: #8e8e8e;
+}
+
+.historyList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.historyRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    font-family: inherit;
+    text-align: left;
+
+    color: inherit;
+
+    background: #202020;
+
+    border: 1px solid #2c2c2c;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.historyRow:hover:not(:disabled) {
+    background: #262626;
+
+    border-color: #444444;
+}
+
+.historyRow:disabled {
+    opacity: 0.6;
+
+    cursor: wait;
+}
+
+.historyText {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+.historyText strong {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: #ffffff;
+}
+
+.historyText small {
+    color: #8e8e8e;
+}
+
+.historyRow > i {
+    font-size: 0.75rem;
+
+    color: #6f6f6f;
+}
+
+.scTopBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    margin-bottom: 16px;
+}
+
+.scBack,
+.scDelete {
+    padding: 6px 10px;
+
+    font-size: 0.82rem;
+    font-family: inherit;
+
+    color: #9a9a9a;
+
+    background: none;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.scBack:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.scDelete:hover {
+    color: #ff9b9b;
+
+    background: rgba(255, 107, 107, 0.1);
+}
+
+
+/* =========================================================
+   LOADING, EMPTY AND ERROR STATES
+   ========================================================= */
+
+.scLoading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 32px 0;
+
+    color: #9a9a9a;
+}
+
+.scSpinner {
+    display: inline-block;
+
+    width: 14px;
+    height: 14px;
+
+    flex-shrink: 0;
+
+    border: 2px solid rgba(128, 128, 128, 0.4);
+    border-top-color: currentColor;
+
+    border-radius: 50%;
+
+    animation: scSpin 0.8s linear infinite;
+}
+
+.scLoading .scSpinner {
+    border-top-color: #7ee787;
+}
+
+@keyframes scSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.scEmpty {
+    padding: 28px 12px;
+
+    text-align: center;
+
+    color: #9a9a9a;
+}
+
+.scEmpty i {
+    margin-bottom: 12px;
+
+    font-size: 2rem;
+
+    color: #aeb1ff;
+}
+
+.scEmpty h3 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+}
+
+.scEmpty p {
+    max-width: 380px;
+
+    margin: 0 auto;
+}
+
+.scError {
+    margin-bottom: 14px;
+    padding: 9px 12px;
+
+    color: #ffb4b4;
+
+    background: #3a1f1f;
+
+    border: 1px solid #6b2c2c;
+
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .interviewBar {
+        width: calc(100% - 24px);
+    }
+
+    .progressStats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .scHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .scStudyItem {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .interviewBarBtn {
+        width: 100%;
+
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .scSpinner {
+        animation-duration: 2s;
+    }
+
+    .scBar span {
+        transition: none;
+    }
+}

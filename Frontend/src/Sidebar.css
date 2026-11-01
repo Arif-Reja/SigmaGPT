@@ -1,0 +1,569 @@
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    height: 100dvh;
+
+    flex-shrink: 0;
+
+    background: #171717;
+    color: #ececec;
+
+    display: flex;
+    flex-direction: column;
+
+    border-right: 1px solid #2a2a2a;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   NEW CHAT BUTTON
+========================= */
+
+.newChatBtn {
+    width: calc(100% - 24px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    margin: 12px;
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: transparent;
+    color: #ececec;
+
+    border: 1px solid #3a3a3a;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.newChatBtn:hover {
+    background: #242424;
+    border-color: #555;
+
+    transform: translateY(-1px);
+}
+
+.newChatBtn:active {
+    transform: scale(0.98);
+}
+
+.newChatBtn:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    width: 30px;
+    height: 30px;
+
+    object-fit: cover;
+
+    background: white;
+
+    border-radius: 50%;
+
+    padding: 2px;
+
+    transition: transform 0.3s ease;
+}
+
+.newChatBtn:hover .logo {
+    transform: rotate(8deg) scale(1.05);
+}
+
+
+/* =========================
+   ICON / TEXT
+========================= */
+
+.newChatBtn span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.newChatBtn i {
+    font-size: 17px;
+    color: #b4b4b4;
+
+    transition: color 0.2s ease;
+}
+
+.newChatBtn:hover i {
+    color: #ffffff;
+}
+
+
+/* =========================
+   SEARCH BOX
+========================= */
+
+.searchBox {
+    width: calc(100% - 24px);
+
+    box-sizing: border-box;
+
+    margin: 2px 12px 4px;
+    padding: 8px 12px;
+
+    font-size: 14px;
+    font-family: inherit;
+
+    color: #fff;
+
+    background: #2a2a2a;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 8px;
+
+    outline: none;
+}
+
+.searchBox::placeholder {
+    color: #8e8e8e;
+}
+
+.searchBox:focus {
+    border-color: #5a5a5a;
+}
+
+
+/* =========================
+   CHAT HISTORY
+========================= */
+
+.history {
+    flex: 1;
+
+    margin: 5px 8px;
+    padding: 8px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* Custom Scrollbar */
+
+.history::-webkit-scrollbar {
+    width: 5px;
+}
+
+.history::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.history::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+}
+
+.history::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+
+/* =========================
+   HISTORY ITEM
+========================= */
+
+.history li {
+    /* The action icons fade into this colour */
+    --row-bg: #171717;
+
+    list-style: none;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 10px 12px;
+    margin-bottom: 4px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    color: #cfcfcf;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* Hover */
+
+.history li:hover {
+    --row-bg: #2a2a2a;
+
+    background: var(--row-bg);
+    color: #ffffff;
+}
+
+
+/* Active / Selected Chat (after hover so it wins) */
+
+.history li.highlighted {
+    --row-bg: #2f2f2f;
+
+    background: var(--row-bg);
+    color: #ffffff;
+}
+
+.history li:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: -2px;
+}
+
+
+/* Chat title */
+
+.threadTitle {
+    flex: 1;
+
+    min-width: 0;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.pinnedIcon {
+    margin-right: 6px;
+
+    font-size: 11px;
+
+    opacity: 0.7;
+}
+
+
+/* =========================
+   PIN / RENAME / DELETE ICONS
+========================= */
+
+.threadActions {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    right: 6px;
+
+    display: none;
+    align-items: center;
+    gap: 2px;
+
+    padding-left: 28px;
+
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--row-bg) 28px
+    );
+}
+
+.history li:hover .threadActions,
+.history li:focus-within .threadActions {
+    display: flex;
+}
+
+
+.iconBtn {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 6px;
+
+    background: transparent;
+    color: #a3a3a3;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.iconBtn i {
+    font-size: 13px;
+}
+
+.iconBtn:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.iconBtn.danger:hover {
+    color: #ff5c5c;
+}
+
+.iconBtn:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 1px;
+}
+
+
+/* =========================
+   RENAME INPUT
+========================= */
+
+.renameInput {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 2px 6px;
+
+    font-size: inherit;
+    font-family: inherit;
+
+    color: #fff;
+
+    background: #1e1e1e;
+
+    border: 1px solid #5a5a5a;
+
+    border-radius: 6px;
+
+    outline: none;
+}
+
+
+/* =========================
+   EMPTY LIST AND ERRORS
+========================= */
+
+.history li.emptyHistory {
+    opacity: 0.6;
+
+    cursor: default;
+
+    pointer-events: none;
+}
+
+.sidebarError {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    margin: 6px 12px;
+    padding: 8px 10px;
+
+    font-size: 13px;
+
+    color: #ffb4b4;
+
+    background: #3a1f1f;
+
+    border-radius: 8px;
+}
+
+.sidebarError .iconBtn {
+    flex-shrink: 0;
+
+    color: inherit;
+}
+
+
+/* =========================
+   BOTTOM SECTION
+========================= */
+
+.sign {
+    padding: 16px;
+    margin: 0 12px 12px;
+
+    font-size: 13px;
+    color: #9a9a9a;
+
+    text-align: center;
+
+    border-top: 1px solid #303030;
+
+    transition: color 0.2s ease;
+}
+
+.sign:hover {
+    color: #ffffff;
+}
+
+
+/* =========================
+   MOBILE MENU (hidden on desktop)
+========================= */
+
+.menuToggle {
+    display: none;
+
+    position: fixed;
+
+    top: 12px;
+    left: 12px;
+
+    z-index: 900;
+
+    width: 40px;
+    height: 40px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+
+    background: #2a2a2a;
+    color: #ececec;
+
+    cursor: pointer;
+}
+
+.menuToggle:hover {
+    background: #333;
+}
+
+.menuToggle:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+.menuToggle i {
+    font-size: 16px;
+}
+
+.sidebarBackdrop {
+    display: none;
+}
+.newChatLabel {
+    flex: 1;
+
+    margin-left: 12px;
+
+    text-align: left;
+}
+
+/* =========================
+   TOUCH SCREENS (no hover)
+========================= */
+
+@media (hover: none) {
+
+    /* Show the icons on the chat that is open */
+    .history li.highlighted .threadActions {
+        display: flex;
+    }
+}
+
+
+/* =========================
+   TABLET AND MOBILE:
+   sidebar becomes a slide-in menu
+========================= */
+
+@media (max-width: 768px) {
+
+    .menuToggle {
+        display: flex;
+    }
+
+    .menuToggle.hidden {
+        display: none;
+    }
+
+    .sidebar {
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        z-index: 1001;
+
+        width: min(300px, 85vw);
+
+        transform: translateX(-100%);
+
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebarBackdrop {
+        display: block;
+
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 1000;
+
+        background: rgba(0, 0, 0, 0.55);
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition: opacity 0.3s ease;
+    }
+
+    .sidebarBackdrop.visible {
+        opacity: 1;
+
+        pointer-events: auto;
+    }
+}
+
+
+/* Respect users who turn animations off */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .sidebar,
+    .sidebarBackdrop,
+    .newChatBtn,
+    .history li {
+        transition: none;
+    }
+}

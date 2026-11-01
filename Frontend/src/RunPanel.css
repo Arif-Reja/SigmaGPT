@@ -1,0 +1,411 @@
+/* =========================
+   RUN BUTTON ON CODE BLOCKS
+========================= */
+
+.codeActions {
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+
+    z-index: 1;
+
+    display: flex;
+    gap: 6px;
+}
+
+/* The Copy button now sits inside .codeActions */
+.codeActions .copyBtn {
+    position: static;
+}
+
+.runBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 4px 10px;
+
+    font-size: 12px;
+    font-family: inherit;
+
+    color: #7ee787;
+
+    background: #1f2d24;
+
+    border: 1px solid #2f4a37;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    opacity: 0.9;
+}
+
+.runBtn:hover,
+.runBtn[aria-expanded="true"] {
+    opacity: 1;
+
+    background: #27382d;
+}
+
+.runBtn:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+.runBtn i {
+    font-size: 10px;
+}
+
+
+/* =========================
+   RUN PANEL
+========================= */
+
+.runPanel {
+    margin-top: 8px;
+
+    overflow: hidden;
+
+    font-size: 0.85rem;
+    line-height: 1.5;
+
+    color: #e0e0e0;
+
+    background: #141414;
+
+    border: 1px solid #30363d;
+
+    border-radius: 12px;
+}
+
+.runPanelBar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    padding: 8px 10px;
+
+    background: #1b1b1b;
+
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.runPanelTitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+}
+
+.runPanelTitle i {
+    color: #8e8e8e;
+}
+
+.runSpacer {
+    flex: 1;
+}
+
+.runTextBtn {
+    padding: 4px 8px;
+
+    font-size: 12px;
+    font-family: inherit;
+
+    color: #9a9a9a;
+
+    background: none;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.runTextBtn:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.runGo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 5px 14px;
+
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+
+    color: #0d1117;
+
+    background: #7ee787;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.runGo:hover {
+    background: #98f0a0;
+}
+
+.runGo.stop {
+    color: #ffffff;
+
+    background: #c0392b;
+}
+
+.runGo.stop:hover {
+    background: #d4493a;
+}
+
+.runClose {
+    width: 28px;
+    height: 28px;
+
+    display: grid;
+    place-items: center;
+
+    color: #9a9a9a;
+
+    background: none;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.runClose:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.runTextBtn:focus-visible,
+.runGo:focus-visible,
+.runClose:focus-visible,
+.runInput textarea:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 1px;
+}
+
+
+/* =========================
+   INPUT BOX
+========================= */
+
+.runInput {
+    padding: 10px;
+
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.runInput label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 0.75rem;
+
+    color: #8e8e8e;
+}
+
+.runInput textarea {
+    width: 100%;
+
+    padding: 8px 10px;
+
+    resize: vertical;
+
+    font-family: "Fira Code", "Consolas", "Courier New", monospace;
+    font-size: 0.82rem;
+
+    color: #f0f0f0;
+
+    background: #0d1117;
+
+    border: 1px solid #30363d;
+
+    border-radius: 8px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   STATUS AND ERRORS
+========================= */
+
+.runStatusLine {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 12px;
+
+    color: #b4b4b4;
+}
+
+.runSpinner {
+    width: 14px;
+    height: 14px;
+
+    border: 2px solid #3a3a3a;
+    border-top-color: #7ee787;
+
+    border-radius: 50%;
+
+    animation: runSpin 0.8s linear infinite;
+}
+
+@keyframes runSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.runError {
+    margin: 10px;
+    padding: 9px 12px;
+
+    color: #ffb4b4;
+
+    background: #3a1f1f;
+
+    border: 1px solid #6b2c2c;
+
+    border-radius: 8px;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.runMeta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    padding: 8px 10px;
+
+    font-size: 0.78rem;
+
+    color: #8e8e8e;
+}
+
+.runBadge {
+    padding: 2px 10px;
+
+    font-weight: 600;
+
+    border-radius: 999px;
+}
+
+.runBadge.ok {
+    color: #7ee787;
+
+    background: rgba(126, 231, 135, 0.12);
+}
+
+.runBadge.warn {
+    color: #f5d68a;
+
+    background: rgba(245, 214, 138, 0.12);
+}
+
+.runBadge.bad {
+    color: #ff9b9b;
+
+    background: rgba(255, 107, 107, 0.12);
+}
+
+.runOutput {
+    margin: 0 10px 10px;
+}
+
+.runOutputTitle {
+    margin-bottom: 4px;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    color: #8e8e8e;
+}
+
+/* The longer selector beats the code block styling in Chat.css */
+.gptDiv .runOutput pre {
+    max-height: 260px;
+
+    margin: 0;
+    padding: 10px 12px;
+
+    overflow: auto;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+
+    font-family: "Fira Code", "Consolas", "Courier New", monospace;
+    font-size: 0.82rem;
+    line-height: 1.55;
+
+    color: #e6edf3;
+
+    background: #0d1117 !important;
+
+    border: 1px solid #30363d;
+
+    border-radius: 8px;
+
+    box-shadow: none;
+}
+
+.gptDiv .runOutput.error pre {
+    color: #ffb4b4;
+
+    border-color: #5a2a2a;
+}
+
+.runEmpty {
+    padding: 4px 12px 14px;
+
+    color: #8e8e8e;
+}
+
+@media (max-width: 480px) {
+
+    .runPanelBar {
+        gap: 6px;
+    }
+
+    .runGo {
+        padding: 5px 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .runSpinner {
+        animation-duration: 2s;
+    }
+}

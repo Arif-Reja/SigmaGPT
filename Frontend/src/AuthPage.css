@@ -1,0 +1,330 @@
+/* =========================
+   LOADING SCREEN
+========================= */
+
+.authLoading {
+    margin: auto;
+
+    color: #9a9a9a;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   LOGIN / REGISTER PAGE
+========================= */
+
+.authPage {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    padding: 24px 16px;
+
+    overflow-y: auto;
+
+    background: #212121;
+
+    color: #ececec;
+}
+
+.authCard {
+    width: 100%;
+    max-width: 400px;
+
+    margin: auto;
+
+    padding: 32px 28px;
+
+    background: #171717;
+
+    border: 1px solid #2a2a2a;
+
+    border-radius: 16px;
+
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+
+    box-sizing: border-box;
+}
+
+.authLogo {
+    display: block;
+
+    width: 48px;
+    height: 48px;
+
+    margin: 0 auto 16px;
+
+    object-fit: cover;
+
+    background: white;
+
+    border-radius: 50%;
+
+    padding: 3px;
+}
+
+.authCard h1 {
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    color: #f5f5f5;
+}
+
+.authSubtitle {
+    margin: 8px 0 20px;
+
+    text-align: center;
+
+    font-size: 0.9rem;
+
+    color: #9a9a9a;
+}
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+.authError,
+.authNotice {
+    margin-bottom: 14px;
+
+    padding: 10px 12px;
+
+    font-size: 0.85rem;
+
+    line-height: 1.45;
+
+    border-radius: 10px;
+}
+
+.authError {
+    color: #ffb4b4;
+
+    background: #3a1f1f;
+
+    border: 1px solid #6b2c2c;
+}
+
+.authNotice {
+    color: #f5d68a;
+
+    background: #3a331f;
+
+    border: 1px solid #6b5a2c;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.authField {
+    display: block;
+
+    margin-bottom: 14px;
+}
+
+.authField > span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 0.82rem;
+
+    color: #b4b4b4;
+}
+
+.authField input {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    font-size: 0.95rem;
+    font-family: inherit;
+
+    color: #f5f5f5;
+
+    background: #2a2a2a;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    transition: border-color 0.2s ease;
+}
+
+.authField input::placeholder {
+    color: #7d7d7d;
+}
+
+.authField input:focus {
+    border-color: #6a6a6a;
+}
+
+.passwordWrap {
+    position: relative;
+}
+
+.passwordWrap input {
+    padding-right: 44px;
+}
+
+.passwordToggle {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #9a9a9a;
+
+    background: none;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+.passwordToggle:hover {
+    color: #ffffff;
+}
+
+.passwordToggle:focus-visible,
+.authSwitch button:focus-visible,
+.authSubmit:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.authSubmit {
+    width: 100%;
+
+    margin-top: 6px;
+
+    padding: 12px;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+
+    color: #212121;
+
+    background: #ffffff;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.authSubmit:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.authSubmit:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+.authSwitch {
+    margin: 18px 0 0;
+
+    text-align: center;
+
+    font-size: 0.85rem;
+
+    color: #9a9a9a;
+}
+
+.authSwitch button {
+    font-size: inherit;
+    font-family: inherit;
+
+    color: #8ab4f8;
+
+    background: none;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+.authSwitch button:hover {
+    text-decoration: underline;
+}
+/* =========================
+   BACK BUTTON AND LOGO
+========================= */
+
+.authBack {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: -8px 0 12px -6px;
+    padding: 6px 10px;
+
+    font-size: 0.85rem;
+    font-family: inherit;
+
+    color: #9a9a9a;
+
+    background: none;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.authBack:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.authBack:focus-visible {
+    outline: 2px solid #8ab4f8;
+
+    outline-offset: 2px;
+}
+
+.authMark {
+    margin: 0 auto 16px;
+}
